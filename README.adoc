@@ -1,0 +1,90 @@
+= Eval Vim language
+
+== Installation
+=== minpac
+
+.somewhere in .vimrc
+[source,vim]
+------------
+call minpac#init()
+" ...
+" more plugins
+" ...
+call minpac#add('habamax/vim-evalvim')
+------------
+
+Then `:call minpac#update()` to install it.
+
+=== vim-plug
+.somewhere in .vimrc
+[source,vim]
+------------
+call plug#begin(s:vimrc_path.'plugged')
+" ...
+" more plugins
+" ...
+Plug 'habamax/vim-evalvim'
+
+call plug#end()
+------------
+
+Then `:PlugInstall` to install it.
+
+== Usage
+
+[source,vim]
+-------------
+echo "hello world"
+-------------
+
+* `gyy` to evaluate current line
+* You should see `hello world` printed below
+
+
+[source,vim]
+-------------
+
+fun! TestFun(p)
+    return a:p
+endfun
+echomsg TestFun("Another Hello!")
+
+-------------
+
+* `gyip` to evaluate current paragraph
+* You should see `Another Hello` printed below
+
+NOTE: You can also visually select text block and evaluate it with `gy`.
+Although you will not see the message printed -- you can find it in
+`:messages`.
+
+
+[source,vim]
+-------------
+
+set nu!
+set cursorline!
+set cursorcolumn!
+
+-------------
+
+* `gyip` to evaluate current paragraph of settings
+* line numbers, cursorline and cursorcolumns will be toggled
+
+
+== Settings
+
+To use something else instead of `gy` you remap ``<Plug>EvalVim``s, for example:
+
+.vimrc
+[source,vim]
+-------------
+
+xmap ge  <Plug>EvalVim
+nmap ge  <Plug>EvalVim
+omap ge  <Plug>EvalVim
+nmap gee <Plug>EvalVimLine
+
+-------------
+
+NOTE: `ge` is taken by vim defaults.
