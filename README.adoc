@@ -19,7 +19,7 @@ Then `:call minpac#update()` to install it.
 .somewhere in .vimrc
 [source,vim]
 ------------
-call plug#begin(s:vimrc_path.'plugged')
+call plug#begin('~/.vim/plugged')
 " ...
 " more plugins
 " ...
