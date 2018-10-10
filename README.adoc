@@ -80,10 +80,10 @@ To use something else instead of `gy` you remap ``<Plug>EvalVim``s, for example:
 [source,vim]
 -------------
 
-xmap ge  <Plug>EvalVim
-nmap ge  <Plug>EvalVim
-omap ge  <Plug>EvalVim
-nmap gee <Plug>EvalVimLine
+xmap ge  <Plug>(EvalVim)
+nmap ge  <Plug>(EvalVim)
+omap ge  <Plug>(EvalVim)
+nmap gee <Plug>(EvalVimLine)
 
 -------------
 

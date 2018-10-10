@@ -38,14 +38,14 @@ function! EvalVim(...)
 	let &clipboard = clipboard_save
 endfunction
 
-xnoremap <expr> <Plug>EvalVim     EvalVim()
-nnoremap <expr> <Plug>EvalVim     EvalVim()
-nnoremap <expr> <Plug>EvalVimLine EvalVim() . '_'
+xnoremap <expr> <Plug>(EvalVim)     EvalVim()
+nnoremap <expr> <Plug>(EvalVim)     EvalVim()
+nnoremap <expr> <Plug>(EvalVimLine) EvalVim() . '_'
 
 if !hasmapto('<Plug>EvalVim') || maparg('gy','n') ==# ''
-	xmap gy  <Plug>EvalVim
-	nmap gy  <Plug>EvalVim
-	omap gy  <Plug>EvalVim
-	nmap gyy <Plug>EvalVimLine
+	xmap gy  <Plug>(EvalVim)
+	nmap gy  <Plug>(EvalVim)
+	omap gy  <Plug>(EvalVim)
+	nmap gyy <Plug>(EvalVimLine)
 endif
 
