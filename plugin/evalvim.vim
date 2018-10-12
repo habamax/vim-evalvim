@@ -42,7 +42,7 @@ xnoremap <expr> <Plug>(EvalVim)     EvalVim()
 nnoremap <expr> <Plug>(EvalVim)     EvalVim()
 nnoremap <expr> <Plug>(EvalVimLine) EvalVim() . '_'
 
-if !hasmapto('<Plug>(EvalVim)') || maparg('gy','n') ==# ''
+if !hasmapto('<Plug>(EvalVim)') && maparg('gy','n') ==# ''
 	xmap gy  <Plug>(EvalVim)
 	nmap gy  <Plug>(EvalVim)
 	omap gy  <Plug>(EvalVim)
