@@ -12,6 +12,10 @@ if exists("g:loaded_evalvim") || v:version < 700
 endif
 let g:loaded_evalvim = 1
 
+if !exists('g:evalvim_capture_output')
+	let g:evalvim_capture_output = 1
+endif
+
 function! EvalVim(...)
 	if !a:0
 		let &operatorfunc = matchstr(expand('<sfile>'), '[^. ]*$')
@@ -31,7 +35,13 @@ function! EvalVim(...)
 		silent exe "normal! `[v`]y"
 	endif
 
-	@"
+	if g:evalvim_capture_output == 1
+		redir @*
+		@"
+		redir END
+	else
+		@"
+	endif
 
 	let &selection = sel_save
 	let @@ = reg_save

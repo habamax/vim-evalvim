@@ -88,3 +88,12 @@ nmap gee <Plug>(EvalVimLine)
 -------------
 
 NOTE: `ge` is taken by vim defaults.
+
+By default all output is captured to `*` register so you can paste it when needed.
+
+To turn it off use:
+
+[source,vim]
+------------
+let g:evalvim_capture_output = 0
+------------
