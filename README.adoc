@@ -74,7 +74,7 @@ set cursorcolumn!
 
 == Settings
 
-To use something else instead of `gy` you remap ``<Plug>EvalVim``s, for example:
+To use something else instead of `gy` you remap ``<Plug>(EvalVim)``s, for example:
 
 .vimrc
 [source,vim]

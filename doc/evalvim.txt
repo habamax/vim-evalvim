@@ -13,6 +13,7 @@ I find it useful for:
 
 MAPPINGS                                                    *evalvim-mappings*
 
+gy                                                                *evalvim-gy*
 'gy' in normal mode is an operator. It starts |operator-pending-mode| where
 you can specify a motion to evaluate with.
 
@@ -60,6 +61,19 @@ vim function text object provided by:
 	https://github.com/kana/vim-textobj-function
 
 using it you will be able to eval vim functions with 'gyaf'.
+
+
+PLUGS                                                          *evalvim-plugs*
+Default mapping is |gy|
+
+One can remap it to something else using following <Plug>s:
+
+	xmap ge  <Plug>(EvalVim)
+	nmap ge  <Plug>(EvalVim)
+	omap ge  <Plug>(EvalVim)
+	nmap gee <Plug>(EvalVimLine)
+
+NOTE: ge is one of vim's default mappings.
 
 
 SETTINGS                                                    *evalvim-settings*
