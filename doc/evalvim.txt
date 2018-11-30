@@ -1,5 +1,11 @@
 *evalvim.txt*  Plugin to eval vim script.
 
+Author:  Maxim Kim <habamax@gmail.com>
+URL:     https://github.com/habamax/vim-evalvim
+License: MIT
+
+================================================================================
+
 Why do you need it?
 
 Well, most probably you don't need this plugin. ;)
