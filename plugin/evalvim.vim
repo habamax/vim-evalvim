@@ -23,16 +23,16 @@ function! EvalVim(...)
 	endif
 	let sel_save = &selection
 	let &selection = "inclusive"
-	let reg_save = @@
+	" let reg_save = @@
 	let clipboard_save = &clipboard
 	let &clipboard = ""
 
 	if a:1 == 'char'	" Invoked from Visual mode, use gv command.
-		silent exe "normal! gvy"
+		silent exe 'normal! gvy'
 	elseif a:1 == 'line'
 		silent exe "normal! '[V']y"
 	else
-		silent exe "normal! `[v`]y"
+		silent exe 'normal! `[v`]y'
 	endif
 
 	" Next lines should be transformed or an error would be raised
@@ -54,7 +54,7 @@ function! EvalVim(...)
 	endif
 
 	let &selection = sel_save
-	let @@ = reg_save
+	" let @@ = reg_save
 	let &clipboard = clipboard_save
 endfunction
 
