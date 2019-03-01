@@ -45,10 +45,11 @@ function! EvalVim(...)
 
 	let @" = substitute(@", '\n\s*\\', '', 'g')
 
-	if g:evalvim_capture_output == 1
-		redir @*
+	if g:evalvim_capture_output == 1 && has("xterm_clipboard")
+		redir => output
 		@"
 		redir END
+		let @* = substitute(output, '^\n\+', '', '')."\n"
 	else
 		@"
 	endif
