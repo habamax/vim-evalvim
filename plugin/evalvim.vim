@@ -49,7 +49,9 @@ function! EvalVim(...)
 		redir => output
 		@"
 		redir END
-		let @* = substitute(output, '^\n\+', '', '')."\n"
+		if output !~ '^\s*$'
+			let @* = substitute(output, '^\n\+', '', '')."\n"
+		endif
 	else
 		@"
 	endif
