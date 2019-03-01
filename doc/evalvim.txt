@@ -19,22 +19,22 @@ I find it useful for:
 
 MAPPINGS                                                    *evalvim-mappings*
 
-gy                                                                *evalvim-gy*
-'gy' in normal mode is an operator. It starts |operator-pending-mode| where
-you can specify a motion to evaluate with.
+<leader>v                                                  *evalvim-<leader>v*
+'<leader>v' in normal mode is an operator. It starts |operator-pending-mode|
+where you can specify a motion to evaluate with.
 
-'gy' in visual mode evaluates selection.
+'<leader>v' in visual mode evaluates selection.
 
 
-gyy                                                              *evalvim-gyy*
+<leader>vv                                                *evalvim-<leader>vv*
 Evaluate current vimscript line.
 
 Put the cursor on the next line:
 
 	let g:my_variable = 100
 
-press 'gyy' to evaluate it. As a result you will have 'g:my_variable' created
-with '100' assigned. Now evaluate the next line with 'gyy':
+press '<leader>vv' to evaluate it. As a result you will have 'g:my_variable' created
+with '100' assigned. Now evaluate the next line with '<leader>vv':
 
 	echo "g:my_variable is equal to ".g:my_variable
 
@@ -42,7 +42,7 @@ you should see "g:my_variable is equal to 100" at the bottom of your vim
 window.
 
 
-gyap                                                            *evalvim-gyap*
+<leader>vap                                              *evalvim-<leader>vap*
 Evaluate current vimscript paragraph.
 
 Put the cursor somewhere in the function
@@ -51,8 +51,9 @@ Put the cursor somewhere in the function
 		:smile
 	endfu
 
-press 'gyap' to evaluate it. As a result you will have 'HelloFunc' created.
-To call it, either run the command from |Cmdline|, or evaluate with 'gyy':
+press '<leader>vap' to evaluate it. As a result you will have 'HelloFunc'
+created. To call it, either run the command from |Cmdline|, or evaluate with
+'<leader>vap':
 
 	:call HelloFunc()
 
@@ -66,20 +67,18 @@ vim function text object provided by:
 	https://github.com/kana/vim-textobj-user
 	https://github.com/kana/vim-textobj-function
 
-using it you will be able to eval vim functions with 'gyaf'.
+using it you will be able to eval vim functions with '<leader>vaf'.
 
 
 PLUGS                                                          *evalvim-plugs*
-Default mapping is |gy|
+Default mapping is |<leader>v|
 
 One can remap it to something else using following <Plug>s:
 
-	xmap ge  <Plug>(EvalVim)
-	nmap ge  <Plug>(EvalVim)
-	omap ge  <Plug>(EvalVim)
-	nmap gee <Plug>(EvalVimLine)
-
-NOTE: ge is one of vim's default mappings.
+	xmap gy  <Plug>(EvalVim)
+	nmap gy  <Plug>(EvalVim)
+	omap gy  <Plug>(EvalVim)
+	nmap gyy <Plug>(EvalVimLine)
 
 
 SETTINGS                                                    *evalvim-settings*

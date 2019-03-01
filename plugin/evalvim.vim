@@ -65,10 +65,10 @@ xnoremap <expr> <Plug>(EvalVim)     EvalVim()
 nnoremap <expr> <Plug>(EvalVim)     EvalVim()
 nnoremap <expr> <Plug>(EvalVimLine) EvalVim() . '_'
 
-if !hasmapto('<Plug>(EvalVim)') && maparg('gy','n') ==# ''
-	xmap gy  <Plug>(EvalVim)
-	nmap gy  <Plug>(EvalVim)
-	omap gy  <Plug>(EvalVim)
-	nmap gyy <Plug>(EvalVimLine)
+if !hasmapto('<Plug>(EvalVim)') && maparg('<leader>v','n') ==# ''
+	xmap <leader>v  <Plug>(EvalVim)
+	nmap <leader>v  <Plug>(EvalVim)
+	omap <leader>v  <Plug>(EvalVim)
+	nmap <leader>vv <Plug>(EvalVimLine)
 endif
 
