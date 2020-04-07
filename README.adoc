@@ -30,7 +30,10 @@ call plug#end()
 
 Then `:PlugInstall` to install it.
 
+
 == Usage
+
+With default mappings turned on in your vimrc (`let g:evalvim_mappings = 1`):
 
 [source,vim]
 -------------
@@ -74,6 +77,14 @@ set cursorcolumn!
 
 == Settings
 
+To use default mappings add to your vimrc:
+
+[source,vim]
+-------------
+let g:evalvim_mappings = 1
+-------------
+
+
 To use something else instead of `<leader>v` you remap ``<Plug>(EvalVim)``s, for example:
 
 .vimrc
@@ -87,7 +98,8 @@ nmap gyy <Plug>(EvalVimLine)
 
 -------------
 
-By default all output is captured to `*` register so you can paste it when needed.
+By default all output is captured to `*` and `"` registers so you can paste it
+when needed.
 
 To turn it off use:
 
