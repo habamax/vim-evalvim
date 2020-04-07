@@ -1,74 +1,22 @@
-" evalvim.vim - Evaluate vim lang
-"
-" gyip to evaluate a para of vimscript
-" gyy to evaluate a line of vimscript
-" visual selection etc
+" evalvim.vim - Evaluate/run vim script
 "
 " Maintainer:   Maxim Kim <habamax@gmail.com>
-" Version:      0.1
+" Version:      1.0
 
 if exists("g:loaded_evalvim") || v:version < 700
 	finish
 endif
 let g:loaded_evalvim = 1
 
-if !exists('g:evalvim_capture_output')
-	let g:evalvim_capture_output = 1
+xnoremap <expr> <Plug>(EvalVim) evalvim#run()
+nnoremap <expr> <Plug>(EvalVim) evalvim#run()
+nnoremap <expr> <Plug>(EvalVimLine) evalvim#run() . '_'
+
+if get(g:, "evalvim_mappings", v:false)
+    if !hasmapto('<Plug>(EvalVim)') && maparg('<leader>v','n') ==# ''
+        xmap <leader>v <Plug>(EvalVim)
+        nmap <leader>v <Plug>(EvalVim)
+        omap <leader>v <Plug>(EvalVim)
+        nmap <leader>vv <Plug>(EvalVimLine)
+    endif
 endif
-
-function! EvalVim(...)
-	if !a:0
-		let &operatorfunc = matchstr(expand('<sfile>'), '[^. ]*$')
-		return 'g@'
-	endif
-	let sel_save = &selection
-	let &selection = "inclusive"
-	" let reg_save = @@
-	let clipboard_save = &clipboard
-	let &clipboard = ""
-
-	if a:1 == 'char'	" Invoked from Visual mode, use gv command.
-		silent exe 'normal! gvy'
-	elseif a:1 == 'line'
-		silent exe "normal! '[V']y"
-	else
-		silent exe 'normal! `[v`]y'
-	endif
-
-	" Next lines should be transformed or an error would be raised
-	" echo 'hello'.
-	" 	\'world'
-	"
-	" to
-	" echo 'hello'.'world'
-	"
-
-	let @" = substitute(@", '\n\s*\\', '', 'g')
-
-	if g:evalvim_capture_output == 1
-		redir => output
-		@"
-		redir END
-		if output !~ '^\s*$'
-			let @* = substitute(output, '^\n\+', '', '')."\n"
-		endif
-	else
-		@"
-	endif
-
-	let &selection = sel_save
-	" let @@ = reg_save
-	let &clipboard = clipboard_save
-endfunction
-
-xnoremap <expr> <Plug>(EvalVim)     EvalVim()
-nnoremap <expr> <Plug>(EvalVim)     EvalVim()
-nnoremap <expr> <Plug>(EvalVimLine) EvalVim() . '_'
-
-if !hasmapto('<Plug>(EvalVim)') && maparg('<leader>v','n') ==# ''
-	xmap <leader>v  <Plug>(EvalVim)
-	nmap <leader>v  <Plug>(EvalVim)
-	omap <leader>v  <Plug>(EvalVim)
-	nmap <leader>vv <Plug>(EvalVimLine)
-endif
-

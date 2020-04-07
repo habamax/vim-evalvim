@@ -1,4 +1,4 @@
-*evalvim.txt*  Plugin to eval vim script.
+*evalvim.txt*  Plugin to eval/run vim script.
 
 Author:  Maxim Kim <habamax@gmail.com>
 URL:     https://github.com/habamax/vim-evalvim
@@ -12,12 +12,18 @@ Well, most probably you don't need this plugin. ;)
 
 I find it useful for:
 
-	* making other vim plugins -- write vimscript anywhere, eval it, see the
-	  result;
+    * making other vim plugins -- write vimscript anywhere, eval/run it, see
+      the result;
 	* check vimrc settings or plugin settings I do occasionally install.
 
 
 MAPPINGS                                                    *evalvim-mappings*
+
+To use default mappings set g:evalvim_mappings to true
+
+    let g:evalvim_mappings = 1
+
+
 
 <leader>v                                                  *evalvim-<leader>v*
 '<leader>v' in normal mode is an operator. It starts |operator-pending-mode|
@@ -83,12 +89,21 @@ One can remap it to something else using following <Plug>s:
 
 SETTINGS                                                    *evalvim-settings*
 
-*g:evalvim_capture-output* (0/1)
+*g:evalvim_capture_output* (0/1)
 	Whether to capture the output of evaluation to '*' register.
 	0 - no
 	1 - yes
 
 	Default: 1.
+
+
+*g:evalvim_mappings* (0/1)
+	Whether to capture the output of evaluation to '*' register.
+	0 - no
+	1 - yes
+
+	Default: 0.
+
 
 
 vim:tw=78:ts=4:ft=help:
