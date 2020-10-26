@@ -1,5 +1,10 @@
 = Eval Vim language
 
+Run vimscript from anywhere in vim and save output to `*` (clipboard) register.
+
+image::https://user-images.githubusercontent.com/234774/97157700-7c66c380-1789-11eb-9eb6-2148f01a32e3.gif[]
+
+
 == Installation
 === minpac
 
