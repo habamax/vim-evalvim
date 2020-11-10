@@ -12,11 +12,8 @@ xnoremap <expr> <Plug>(EvalVim) evalvim#run()
 nnoremap <expr> <Plug>(EvalVim) evalvim#run()
 nnoremap <expr> <Plug>(EvalVimLine) evalvim#run() . '_'
 
-if get(g:, "evalvim_mappings", v:false)
-    if !hasmapto('<Plug>(EvalVim)') && maparg('<leader>v','n') ==# ''
-        xmap <leader>v <Plug>(EvalVim)
-        nmap <leader>v <Plug>(EvalVim)
-        omap <leader>v <Plug>(EvalVim)
-        nmap <leader>vv <Plug>(EvalVimLine)
-    endif
-endif
+"" example mappings
+" xmap <leader>v <Plug>(EvalVim)
+" nmap <leader>v <Plug>(EvalVim)
+" omap <leader>v <Plug>(EvalVim)
+" nmap <leader>vv <Plug>(EvalVimLine)
