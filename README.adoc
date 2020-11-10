@@ -38,7 +38,17 @@ Then `:PlugInstall` to install it.
 
 == Usage
 
-With default mappings turned on in your vimrc (`let g:evalvim_mappings = 1`):
+There are no default mappings, add your own, for example:
+
+[source,vim]
+------------------------------------------------------------------------------
+xmap <leader>v <Plug>(EvalVim)
+nmap <leader>v <Plug>(EvalVim)
+omap <leader>v <Plug>(EvalVim)
+nmap <leader>vv <Plug>(EvalVimLine)
+------------------------------------------------------------------------------
+
+Then having somewhere in your buffer add:
 
 [source,vim]
 -------------
@@ -81,27 +91,6 @@ set cursorcolumn!
 
 
 == Settings
-
-To use default mappings add to your vimrc:
-
-[source,vim]
--------------
-let g:evalvim_mappings = 1
--------------
-
-
-To use something else instead of `<leader>v` you remap ``<Plug>(EvalVim)``s, for example:
-
-.vimrc
-[source,vim]
--------------
-
-xmap gy  <Plug>(EvalVim)
-nmap gy  <Plug>(EvalVim)
-omap gy  <Plug>(EvalVim)
-nmap gyy <Plug>(EvalVimLine)
-
--------------
 
 By default all output is captured to `*` and `"` registers so you can paste it
 when needed.
