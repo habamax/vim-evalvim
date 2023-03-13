@@ -1,5 +1,36 @@
 = Eval Vim language
 
+*UPD*
+
+Vim9 has updated `source` command that can source not only the file but buffer lines, in a simplest form it is just a
+`:source` to evaluate whole buffer, `:.source` to evaluate current line.
+
+Thus, simplified version of this plugin could be put into your .vimrc:
+
+[source,vim]
+------------
+
+vim9script
+# source vimscript (operator)
+def SourceVim(...args: list<any>): any
+    if len(args) == 0
+        &opfunc = matchstr(expand('<stack>'), '[^. ]*\ze[')
+        return 'g@'
+    endif
+    if getline(1) =~ '^vim9script$'
+        vim9cmd :'[,']source
+    else
+        :'[,']source
+    endif
+    return ''
+enddef
+nnoremap <silent> <expr> <space>v SourceVim()
+xnoremap <silent> <expr> <space>v SourceVim()
+nnoremap <silent> <expr> <space>vv SourceVim() .. '_'
+------------
+
+'''
+
 Run vimscript from anywhere in vim and save output to `*` (clipboard) register.
 
 image::https://user-images.githubusercontent.com/234774/97157700-7c66c380-1789-11eb-9eb6-2148f01a32e3.gif[]
