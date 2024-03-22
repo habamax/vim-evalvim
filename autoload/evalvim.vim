@@ -17,30 +17,17 @@ function! evalvim#run(...)
         silent exe 'normal! `[v`]y'
     endif
 
-    " Next lines should be transformed or an error would be raised
-    " echo 'hello'.
-    "   \'world'
-    "
-    " to
-    " echo 'hello'.'world'
-    "
-
-    if !has("patch-8.2.0997")
-        let @" = substitute(@", '\n\s*\\', '', 'g')
-    endif
 
     if get(g:, "evalvim_capture_output", v:true)
-        redir => output
-        @"
-        redir END
-        if output !~ '^\s*$'
-            let @* = substitute(output, '^\n\+', '', '')."\n"
+        let @* = system(getreg('@"'))
+        if !v:shell_error
             let @" = @*
+            echo @* . "\n" . "Output copied"
         endif
     else
-        @"
+        system(getreg('@"'))
     endif
-
+ 
     let &selection = sel_save
     let &clipboard = clipboard_save
 endfunction
